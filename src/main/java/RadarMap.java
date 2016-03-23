@@ -21,7 +21,7 @@ public class RadarMap{
    public RadarMap(){
       JFrame map = new JFrame("RadarMap");
       map.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-      map.setSize(600,400);
+      map.setSize(xdim+15,400);
       map.setLocationRelativeTo(null);
       map.add(makeLines());
       map.setVisible(true);
@@ -42,8 +42,8 @@ public class RadarMap{
       //panel.add(o);
       LinesComponent comp = new LinesComponent();
       comp.setPreferredSize(new Dimension(320, 200));
-      comp.addLine(xdim/2, ydim-(ydim/8), 30, 30, Color.GREEN);
-      comp.addLine(xdim/2, ydim-(ydim/8), 500, 30, Color.GREEN);
+      comp.addLine(xdim/2, ydim-(ydim/8), 10, 60, Color.GREEN);
+      comp.addLine(xdim/2, ydim-(ydim/8), 590, 60, Color.GREEN);
       panel.add(comp);
       return panel;
    }
@@ -68,7 +68,7 @@ private static class Line{
 private final LinkedList<Line> lines = new LinkedList<Line>();
 
 public void addLine(int x1, int x2, int x3, int x4) {
-    addLine(x1, x2, x3, x4, Color.black);
+    addLine(x1, x2, x3, x4, Color.GREEN);
 }
 
 public void addLine(int x1, int x2, int x3, int x4, Color color) {
@@ -92,6 +92,7 @@ protected void paintComponent(Graphics g) {
          g.fillOval(line.x1-5, line.y1-5, 10, 10);
       x++;
     }
+    
 //    g.fillOval(getWidth()/2, getHeight()-(getHeight()/8), 10, 10);
 }
 
