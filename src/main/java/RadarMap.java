@@ -15,35 +15,19 @@ import java.io.*;
 
 public class RadarMap{
    private JFrame radarmap;
-   
+   private int xdim = 600;
+   private int ydim = 400;
 
    public RadarMap(){
       JFrame map = new JFrame("RadarMap");
       map.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
       map.setSize(600,400);
       map.setLocationRelativeTo(null);
-      map.add(makePanel());
       map.add(makeLines());
       map.setVisible(true);
    }
    
-   public static JPanel makePanel(){
-      JPanel panel = new JPanel();
-      panel.setLayout(new BorderLayout());
-      panel.setOpaque(true);
-      int xdim=600;
-      int ydim=400;
-      panel.setPreferredSize(new Dimension(xdim, ydim));
-      panel.setBackground(Color.BLACK);
-      Origin o = new Origin();
-      panel.add(o);
-      //LinesComponent comp = new LinesComponent();
-      //comp.setPreferredSize(new Dimension(320, 200));
-      //comp.addLine(xdim/2, ydim-(ydim/8), 30, 30, Color.GREEN);
-      //comp.addLine(xdim/2, ydim-(ydim/8), 500, 30, Color.GREEN);
-      //panel.add(comp);
-      return panel;
-   }
+
 
    public static JPanel makeLines(){
       JPanel panel = new JPanel();
@@ -65,17 +49,6 @@ public class RadarMap{
    }
 }
 
-
-
-
-class Origin extends JComponent{
-   public void paintComponent(Graphics g){
-      super.paintComponent(g);
-      g.setColor(Color.GREEN);
-      g.fillOval(getWidth()/2, getHeight()-(getHeight()/8), 20, 20); 
-        
-   }
-}
 
 class LinesComponent extends JComponent{
 private static class Line{
@@ -111,10 +84,15 @@ public void clearLines() {
 @Override
 protected void paintComponent(Graphics g) {
     super.paintComponent(g);
+    int x = 0; //Simply keeps track of number of lines
     for (Line line : lines) {
-        g.setColor(line.color);
-        g.drawLine(line.x1, line.y1, line.x2, line.y2);
+      g.setColor(line.color);
+      g.drawLine(line.x1, line.y1, line.x2, line.y2);
+      if (x == 0)
+         g.fillOval(line.x1-5, line.y1-5, 10, 10);
+      x++;
     }
+//    g.fillOval(getWidth()/2, getHeight()-(getHeight()/8), 10, 10);
 }
 
 }
