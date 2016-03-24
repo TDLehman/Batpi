@@ -14,12 +14,12 @@ echo = 24
 GPIO.setup(trig, GPIO.OUT)
 GPIO.setup(echo, GPIO.IN)
 # make sure trigger pin is set to low, then wait for it to settle
-GPIO.output(trig, false)
+GPIO.output(trig,  False)
 time.sleep(.5)
 # As per HC - SR04 documentation, set trig to high for 10uS.
-GPIO.output(trig, TRUE)
+GPIO.output(trig, True)
 time.sleep(0.00001)
-GPIO.output(trig, FALSE)
+GPIO.output(trig, False)
 # echo pin stays high from the time the trigger happens until a signal is returned
 # So, measure the time the pin stayed high
 while GPIO.input(echo) == 0:
@@ -32,4 +32,4 @@ soundSpeed = 34300
 distance = duration*34300/2
 # reset pins, return distance to nearest object
 GPIO.cleanup()
-return distance
+print distance
