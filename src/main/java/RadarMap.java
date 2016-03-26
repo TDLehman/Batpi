@@ -28,7 +28,7 @@ public class RadarMap{
    }
    
 
-
+   //Actually draws everything. I should probably make this better.
    public static JPanel makeLines(){
       JPanel panel = new JPanel();
       panel.setLayout(new BorderLayout());
