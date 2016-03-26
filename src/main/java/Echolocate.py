@@ -7,6 +7,7 @@ import time
 GPIO.setmode(GPIO.BCM)
 # Specify input and output pins
 # GPIO 23 (Pin 16), connects to the trigger of the sonar sensor
+GPIO.setwarnings(False)
 trig = 23
 # GPIO 24 (pin 18), connects to the echo of the sonar sensor
 echo = 24
