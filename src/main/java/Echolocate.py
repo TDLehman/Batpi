@@ -4,29 +4,36 @@
 # Imports from Python library. Setmode automatically sets up pin numbering
 import RPi.GPIO as GPIO
 import time
+from threading import Thread
 
 # Setmode might have to go inside of function. idk.
 GPIO.setmode(GPIO.BCM) # Set easy pin numbering system
 GPIO.setwarnings(False) # Ignore stupid warnings
+trig = 23 #GPIO 23 (Pin 16), Connects to Sonar Sensor trigger
+echo = 24 # GPIO 24 (pin 18), connects to Sonar Sensor Echo
+GPIO.setup(trig, GPIO.OUT) # sets GPIO ports as either outputs or inputs
+GPIO.setup(echo, GPIO.IN)
 
+x = takeSample(trig, echo)
+y = takeSample(trig, echo)
+z = takeSample(trig, echo)
 
-w = takeSample()
-x = takeSample()
-y = takeSample()
-z = takeSample()
-if max(w,x,y,z) > 2*min(w,x,y,z)
+while max(x,y,z) > 2*min(x,y,z):
    print ("A measurement stunk. :(")
 
-def takeSample():
+   if x == max(x,y,z):
+      x = takeSample(trig, echo)
+   elif y == max(x,y,z):
+      y = takeSample(trig, echo)
+   elif z == max(x,y,z):
+      z = takeSample(trig, echo)
 
-   trig = 23 #GPIO 23 (Pin 16), Connects to Sonar Sensor trigger
-   echo = 24 # GPIO 24 (pin 18), connects to Sonar Sensor Echo
-   GPIO.setup(trig, GPIO.OUT) # sets GPIO ports as either outputs or inputs
-   GPIO.setup(echo, GPIO.IN)
+
+def takeSample(trig, echo):
    GPIO.output(trig,  False) # set trigger pin to low,
    time.sleep(.25) # wait for it to settle
    GPIO.output(trig, True)
-   time.sleep(0.00001) # As per HC - SR04 documentation, set trig high 10uS.
+   time.sleep(0.00001) # HC - SR04 documentation, set trig high 10uS.
    GPIO.output(trig, False)
    while GPIO.input(echo) == 0: # trigger sets echo pin to high
      start = time.time()
