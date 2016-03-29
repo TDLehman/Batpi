@@ -7,26 +7,30 @@ import time
 from threading import Thread
 
 # Setmode might have to go inside of function. idk.
-GPIO.setmode(GPIO.BCM) # Set easy pin numbering system
-GPIO.setwarnings(False) # Ignore stupid warnings
-trig = 23 #GPIO 23 (Pin 16), Connects to Sonar Sensor trigger
-echo = 24 # GPIO 24 (pin 18), connects to Sonar Sensor Echo
-GPIO.setup(trig, GPIO.OUT) # sets GPIO ports as either outputs or inputs
-GPIO.setup(echo, GPIO.IN)
 
-x = takeSample(trig, echo)
-y = takeSample(trig, echo)
-z = takeSample(trig, echo)
+def getSample():
+   GPIO.setmode(GPIO.BCM) # Set easy pin numbering system
+   GPIO.setwarnings(False) # Ignore stupid warnings
+   trig = 23 #GPIO 23 (Pin 16), Connects to Sonar Sensor trigger
+   echo = 24 # GPIO 24 (pin 18), connects to Sonar Sensor Echo
+   GPIO.setup(trig, GPIO.OUT) # set GPIO ports as either output or input
+   GPIO.setup(echo, GPIO.IN)
 
-while max(x,y,z) > 2*min(x,y,z):
-   print ("A measurement stunk. :(")
+   x = takeSample(trig, echo)
+   y = takeSample(trig, echo)
+   z = takeSample(trig, echo)
 
-   if x == max(x,y,z):
-      x = takeSample(trig, echo)
-   elif y == max(x,y,z):
-      y = takeSample(trig, echo)
-   elif z == max(x,y,z):
-      z = takeSample(trig, echo)
+   while max(x,y,z) > 2*min(x,y,z):
+      print ("A measurement stunk. :(")
+      if x == max(x,y,z):
+         x = takeSample(trig, echo)
+      elif y == max(x,y,z):
+         y = takeSample(trig, echo)
+      elif z == max(x,y,z):
+         z = takeSample(trig, echo)
+
+   avDistance = (x+y+z)/float(2)
+   return avDistance
 
 
 def takeSample(trig, echo):
