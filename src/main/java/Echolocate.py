@@ -4,33 +4,27 @@
 # Imports from Python library. Setmode automatically sets up pin numbering
 import RPi.GPIO as GPIO
 import time
-GPIO.setmode(GPIO.BCM)
-# Specify input and output pins
-# GPIO 23 (Pin 16), connects to the trigger of the sonar sensor
-GPIO.setwarnings(False)
-trig = 23
-# GPIO 24 (pin 18), connects to the echo of the sonar sensor
-echo = 24
-# sets GPIO ports as either outputs or inputs
-GPIO.setup(trig, GPIO.OUT)
+
+
+GPIO.setmode(GPIO.BCM) # Set easy pin numbering system
+GPIO.setwarnings(False) # Ignore stupid warnings
+
+trig = 23 #GPIO 23 (Pin 16), Connects to Sonar Sensor trigger
+echo = 24 # GPIO 24 (pin 18), connects to Sonar Sensor Echo
+GPIO.setup(trig, GPIO.OUT) # sets GPIO ports as either outputs or inputs
 GPIO.setup(echo, GPIO.IN)
-# make sure trigger pin is set to low, then wait for it to settle
-GPIO.output(trig,  False)
-time.sleep(.5)
-# As per HC - SR04 documentation, set trig to high for 10uS.
+GPIO.output(trig,  False) # set trigger pin to low,
+time.sleep(.5) # wait for it to settle
 GPIO.output(trig, True)
-time.sleep(0.00001)
+time.sleep(0.00001) # As per HC - SR04 documentation, set trig high for 10uS.
 GPIO.output(trig, False)
-# echo pin stays high from the time the trigger happens until a signal is returned
-# So, measure the time the pin stayed high
-while GPIO.input(echo) == 0:
+while GPIO.input(echo) == 0: # trigger sets echo pin to high
   start = time.time()
-while GPIO.input(echo) == 1:
-  end = time.time()
-duration = end - start
-#Calculate distance to object. divided by 2 to account for return trip of sound wave
-soundSpeed = 34300
-distance = duration*34300/2
+while GPIO.input(echo) == 1: # echo goes low when signal is returned
+  end = time.time() # Python returns last time echo was high 
+duration = end - start # measure the time the pin stayed high
+soundSpeed = 34300 # Speed of soundwave
+distance = duration*34300/2 # account for return trip
 # reset pins, return distance to nearest object
 GPIO.cleanup()
 print distance
