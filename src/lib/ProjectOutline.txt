@@ -1,11 +1,12 @@
 Expected parts of this project (roughly in order): 
-1. [] Set up a sonic distance sensor. That is, get the pi to successfully interpret input from the sensor. 
+1. [X] Set up a sonic distance sensor. That is, get the pi to successfully interpret input from the sensor. 
 2. [] Give physical feedback based on proximity (led, vibration motor, etc). 
 3. [] receive multiple samples, via either Mounting additional Sensors, or mounting sensor to motor. 
 4. [] The pi interprets SDS input, and can display it as an image. 
 5. [] Make python scripts run at startup. 
-6. [] set up SSH access to PI, regardless of which network it is connected to. (no-ip?) 
-7. [] Safely power PI with a battery. Auto-shutdown function, 5v regulator, power switch, etc. 
+6. [X] set up SSH access to PI, regardless of which network it is connected to. (Working via weaved)
+7. [X] Safely power PI with a battery. 
+7.5[] Auto-shutdown function, 5v regulator, power switch, etc. 
 8. [] connect project to a chassis, wheeled motors, motor controller, additional psu to allow mobility. (can be broken into smaller parts) 
 9. [] Write navigation program using distance samples to prevent collisions. (perhaps goal oriented, crossing a room)
 
