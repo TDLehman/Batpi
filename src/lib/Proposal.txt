@@ -1,0 +1,35 @@
+Tylor Lehman
+Capstone Proposal
+
+
+
+                                    BatPi
+
+   I propose creating a computer driven vehicle out of a Raspberry Pi. This project would satisfy the requirements of a Capstone Project for many reasons. It will require programming in a number of different languages, including Java and Python. It will also require knowledge outside of the Computer Science curriculum, including electrical fabrication skills picked up from coursework at Alfred State college. 
+   This project would entail many different steps. The first steps will be to get hardware working on the GPIO pins, and getting the pi to read input back. The vision will be provided by a sonic distance sensor attached to a servo motor, and the mobility will be provided by two dc motors controlled by a single H-bridge motor controller. Finally, an external battery must be set up to drive both the Raspberry Pi and the motors, which require more power than the Pi can provide. Aside from the hardware assembly, this project will require extensive software support. The code for the Raspberry pi will include separate classes for the distance sensor, servo motor, and the dc motors. Also, a connection must be set up to allow the Pi to be accessed remotely regardless of what network it is on. This will potentially be completed with a third-party program using SSH protocol. A graphic user interface will be created in Java to provide a reading of the surroundings of the vehicle and its position relative to the starting location. This is a much larger project than any I have worked individually on, similar in scope to Quoridor, a project I worked on with a team of 5. Despite the size of the project and the time constraints, I am aptly equipped to complete it. I have already evaluated the price of hardware, the intensity of programming required, and found resources that could provide assistance should I become impeded.  
+   This satisfies the requirements for a successful capstone project. It provides additional experience in many topics covered in coursework I have taken at SUNY Potsdam. This includes networking between the Raspberry Pi and a host computer, software engineering on large scale projects using version control systems, and general programming in Java and Python. In addition to this, it also provides exposure to less familiar topics, such as software to hardware infrastructure, writing an AI, and digital imaging. 
+
+
+
+
+                                    Timeline:
+Expected parts of this project (roughly in order): 
+1. (2 hours) Set up a sonic distance sensor. That is, get the pi to successfully interpret input from the sensor. 
+2. (1 hour)Give physical feedback based on proximity (led, vibration motor, etc). 
+3. (4 hours)receive multiple samples, via either Mounting additional Sensors, or mounting sensor to motor. 
+4. (8 hours)The pi interprets SDS input, and can display it as an image. 
+5. (1 hour)Make python scripts run at startup. 
+6. (1 hour)set up SSH access to PI, regardless of which network it is connected to. (Working via weaved)
+7. (1 hour)Safely power PI with a battery. 
+7.5 (1 hour)Auto-shutdown function, 5v regulator, power switch, etc. 
+8. (8 hours)connect project to a chassis, wheeled motors, motor controller, additional psu to allow mobility. (can be broken into smaller parts) 
+9. (8 hours)Write navigation program using distance samples to prevent collisions. (perhaps goal oriented, crossing a room)
+
+I don't expect to have to meet with Faculty members often, outside of providing progress reports. hour-long weekly meetings should be sufficient to work out any problems and provide updates on progress. progress will be measured by checking off expected parts of the project as they are finished.
+
+
+
+                                   Rubric:
+Work required for the following grades:
+C: 
+
