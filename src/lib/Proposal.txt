@@ -31,5 +31,6 @@ I don't expect to have to meet with Faculty members often, outside of providing 
 
                                    Rubric:
 Work required for the following grades:
-C: 
-
+C: Sonic distance sensor and servo motor work in conjunction with each other. The PI analyzes data received from them into a 2d map.
+B: All of the above, and DC motors work in conjunction with Radar Map to allow the Pi to be driven. Pi can be controlled via pre-programming or through ssh text commands such as forward, left, right, back.  
+A: All of the above, and Pi can take readings and navigate around large obstacles on its own, attempting to reach the other side of the room, or a set distance away from its starting point. Graphical representation of surroundings and position can be sent over ssh or socket connection. 
