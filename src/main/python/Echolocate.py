@@ -4,7 +4,7 @@
 # Imports from Python library. Setmode automatically sets up pin numbering
 import RPi.GPIO as GPIO
 import time
-from threading import Thread
+
 
 # Setmode might have to go inside of function. idk.
 
