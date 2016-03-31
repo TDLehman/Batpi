@@ -6,7 +6,7 @@ from Echolocate import getSample
 from time import sleep
 
 
-def testfile
+def testfile():
    step_size = 10 # change pulse width by 10*10us = 100us or 0.1ms in each step
    dont_buffer = 0 # don't buffer writes to avoid flushes
    samparray = [0 for i in range(float(100)/step_size)] #float bc remainder
