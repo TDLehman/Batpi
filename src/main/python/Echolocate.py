@@ -34,8 +34,12 @@ def getSample():
 
 
 def takeSample(trig, echo):
+   print "Once"
+   GPIO.setmode(GPIO.BCM)
+   GPIO.setup(trig, GPIO.OUT) # set GPIO ports as either output or input
+   GPIO.setup(echo, GPIO.IN)
    GPIO.output(trig,  False) # set trigger pin to low,
-   time.sleep(.25) # wait for it to settle
+   time.sleep(.5) # wait for it to settle
    GPIO.output(trig, True)
    time.sleep(0.00001) # HC - SR04 documentation, set trig high 10uS.
    GPIO.output(trig, False)
