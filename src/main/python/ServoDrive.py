@@ -2,6 +2,11 @@
 # BatPi
 # ServoDrive.py
 
+
+
+# Currently, This class only serves as an example of how to drive the servo
+
+
 # the servod daemon from ./servoblaster/PiBits/servoblaster/
 # It sets up a named pipe device named /dev/servoblaster.
 # Writing pulse width to /dev/servoblaster actuates the servo.
