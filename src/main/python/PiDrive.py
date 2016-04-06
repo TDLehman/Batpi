@@ -84,3 +84,10 @@ class PiDrive(object):
       GPIO.output(Motor2E,GPIO.HIGH)
       sleep(.25)
       stop()
+
+if __name__ == "__main__":
+   forward()
+   backward()
+   turnLeft()
+   turnRight()
+
