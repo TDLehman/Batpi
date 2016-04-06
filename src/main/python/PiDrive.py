@@ -1,6 +1,6 @@
 # Tylor Lehman
 # BatPi
-# PiPilot.py
+# PiDrive.py
 
 
 # Controls the DC motors for movement of the Raspberry Pi 
