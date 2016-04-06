@@ -24,7 +24,7 @@ def fullsweep():
          print cmd
          servo_blaster_device.write(cmd)
          samparray[li] = getSample()
-         sleep(.25) # This might be way too big of a sleep
+         #sleep(.25) # This might be way too big of a sleep
    print (li)
 
 fullsweep()
