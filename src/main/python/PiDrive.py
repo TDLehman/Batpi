@@ -53,11 +53,6 @@ class PiDrive(object):
       sleep(1)
       stop()
 
-   def stop(): 
-      print "Stopping"
-      GPIO.output(Motor1E,GPIO.LOW)
-      GPIO.output(Motor2E,GPIO.LOW)
-      GPIO.cleanup()
     
    def turnRight():
       print "Turning Right"
@@ -85,7 +80,16 @@ class PiDrive(object):
       sleep(.25)
       stop()
 
+   def stop(): 
+      print "Stopping"
+      GPIO.output(Motor1E,GPIO.LOW)
+      GPIO.output(Motor2E,GPIO.LOW)
+      GPIO.cleanup()
+
+
+
 if __name__ == "__main__":
+x=PiDrive
    forward()
    backward()
    turnLeft()
