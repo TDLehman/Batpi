@@ -9,6 +9,8 @@ Senior Project. Make a Raspberry Pi use a sonic distance sensor to map its surro
 Pin assignments (GPIO.BCM):
 name - assignment - physical pin - file
 
+power-  3.3V 	(Physical pin 2)  - Power rail
+Ground- 	(Physical pin 6)  - Ground rail
 trig -  GPIO 23 (physical pin 16) - Echolocate.py
 echo -  GPIO 24 (physical pin 18) - Echolocate.py
 Servo - GPIO 4  (physical pin 7 ) - ServoDrive.py (only used as example)
