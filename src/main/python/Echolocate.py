@@ -7,38 +7,38 @@ import time
 
 
 # Setmode might have to go inside of function. idk.
-class echolocate(object):
+class Echolocate(object):
    def __init__(self):
       GPIO.setmode(GPIO.BCM) # Set easy pin numbering system
       GPIO.setwarnings(False) # Ignore stupid warnings
-      trig = 23 # GPIO 23 (Pin 16), Connects to Sonar Sensor trigger
-      echo = 24 # GPIO 24 (pin 18), connects to Sonar Sensor Echo
-      GPIO.setup(trig, GPIO.OUT) # set GPIO ports as either output or input
-      GPIO.setup(echo, GPIO.IN)
+      self.trig = 23 # GPIO 23 (Pin 16), Connects to Sonar Sensor trigger
+      self.echo = 24 # GPIO 24 (pin 18), connects to Sonar Sensor Echo
+      GPIO.setup(self.trig, GPIO.OUT) # set GPIO ports as either output or input
+      GPIO.setup(self.echo, GPIO.IN)
 
-   def getSample():
-      x = takeSample(trig, echo)
-      y = takeSample(trig, echo)
-      z = takeSample(trig, echo)
+   def getSample(self):
+      x = self.takeSample(self.trig, self.echo)
+      y = self.takeSample(self.trig, self.echo)
+      z = self.takeSample(self.trig, self.echo)
 
       while max(x,y,z) > 2*min(x,y,z):
          print ("Outlier Detected. Retaking Samples")
-         x = takeSample(trig, echo)
-         y = takeSample(trig, echo)
-         z = takeSample(trig, echo)
+         x = self.takeSample(self.trig, self.echo)
+         y = self.takeSample(self.trig, self.echo)
+         z = self.takeSample(self.trig, self.echo)
 
       avDistance = (x+y+z)/float(3)
       return avDistance
 
 
-   def takeSample(trig, echo):
+   def takeSample(self, trig, echo):
       # Uncomment for error checking
       #print "Once"
       GPIO.setmode(GPIO.BCM)
       GPIO.setup(trig, GPIO.OUT) # set GPIO ports as either output or input
       GPIO.setup(echo, GPIO.IN)
       GPIO.output(trig,  False) # set trigger pin to low,
-      time.sleep(.5) # wait for it to settle
+      time.sleep(.10) # wait for it to settle
       GPIO.output(trig, True)
       time.sleep(0.00001) # HC - SR04 documentation, set trig high 10uS.
       GPIO.output(trig, False)
@@ -50,6 +50,9 @@ class echolocate(object):
       soundSpeed = 34300 # Speed of soundwave
       distance = duration*34300/2 # account for return trip
       # reset pins, return distance to nearest object
-      GPIO.cleanup()
       return distance
-      
+
+if __name__ == "__main__":
+   x = Echolocate()
+   print x.getSample()
+   print x.getSample()
