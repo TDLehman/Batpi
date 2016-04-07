@@ -42,8 +42,11 @@ class Echolocate(object):
       GPIO.output(trig, True)
       time.sleep(0.00001) # HC - SR04 documentation, set trig high 10uS.
       GPIO.output(trig, False)
+      start=time.time() # added this to prevent crash from undefined start
       while GPIO.input(echo) == 0: # trigger sets echo pin to high
         start = time.time() # Keeps getting stuck here! 
+      
+      end=start # prevent crash from undefined end hopefully!
       while GPIO.input(echo) == 1: # echo goes low when signal is returned
         end = time.time() # Python returns last time echo was high 
       duration = end - start # measure the time the pin stayed high
