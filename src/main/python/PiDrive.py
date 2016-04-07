@@ -55,8 +55,9 @@ class PiDrive(object):
       self.stop()
 
     
-   def turnRight(self):
-      print "Turning Right"
+   def turnLeft(self):
+      print "Turning Left"
+      # Comments are backward.
       #Turn left wheel forward
       GPIO.output(self.Motor1A,GPIO.HIGH)
       GPIO.output(self.Motor1B,GPIO.LOW)
@@ -65,11 +66,12 @@ class PiDrive(object):
       GPIO.output(self.Motor2A,GPIO.LOW)
       GPIO.output(self.Motor2B,GPIO.HIGH)
       GPIO.output(self.Motor2E,GPIO.HIGH)
-      sleep(.50)
+      sleep(2)
       self.stop()
 
-   def turnLeft(self):
-      print "Turning Left"
+   def turnRight(self):
+      print "Turning Right"
+      # Comments are still backward
       # Turn left wheel backward
       GPIO.output(self.Motor1A,GPIO.LOW)
       GPIO.output(self.Motor1B,GPIO.HIGH)
@@ -78,7 +80,7 @@ class PiDrive(object):
       GPIO.output(self.Motor2A,GPIO.HIGH)
       GPIO.output(self.Motor2B,GPIO.LOW)
       GPIO.output(self.Motor2E,GPIO.HIGH)
-      sleep(.50)
+      sleep(2)
       self.stop()
 
    def stop(self): 
