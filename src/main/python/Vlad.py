@@ -6,6 +6,7 @@
 # Initial AI for BatPi. Will try to go forward until there is something 
 # 500 units in front of it.
 
+from PiDrive import PiDrive
 
 def Vlad():
    motor = PiDrive()
@@ -19,3 +20,5 @@ def Vlad():
       envmap=sensor.sweep()
    
    print "There's something in front of me. I'm done."
+
+Vlad()
