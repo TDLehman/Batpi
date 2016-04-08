@@ -12,6 +12,7 @@ from time import sleep
 class PiDrive(object):
    def __init__(self):
       GPIO.setwarnings(False)
+      print "Don't forget, warnings are turned off for PiDrive"
       GPIO.setmode(GPIO.BCM) 
       self.Motor1A = 17 # GPIO 17 (pin 11)
       self.Motor1B = 27 # GPIO 27 (pin 13) 
@@ -39,7 +40,7 @@ class PiDrive(object):
       GPIO.output(self.Motor2A,GPIO.HIGH)
       GPIO.output(self.Motor2B,GPIO.LOW)
       GPIO.output(self.Motor2E,GPIO.HIGH)
-      sleep(1)
+      sleep(.5)
       self.stop() 
       
    def backward(self): 
@@ -51,7 +52,7 @@ class PiDrive(object):
       GPIO.output(self.Motor2A,GPIO.LOW)
       GPIO.output(self.Motor2B,GPIO.HIGH)
       GPIO.output(self.Motor2E,GPIO.HIGH)
-      sleep(1)
+      sleep(.5)
       self.stop()
 
     
@@ -66,7 +67,7 @@ class PiDrive(object):
       GPIO.output(self.Motor2A,GPIO.LOW)
       GPIO.output(self.Motor2B,GPIO.HIGH)
       GPIO.output(self.Motor2E,GPIO.HIGH)
-      sleep(2)
+      sleep(.5)
       self.stop()
 
    def turnRight(self):
@@ -80,7 +81,7 @@ class PiDrive(object):
       GPIO.output(self.Motor2A,GPIO.HIGH)
       GPIO.output(self.Motor2B,GPIO.LOW)
       GPIO.output(self.Motor2E,GPIO.HIGH)
-      sleep(2)
+      sleep(.5)
       self.stop()
 
    def stop(self): 
