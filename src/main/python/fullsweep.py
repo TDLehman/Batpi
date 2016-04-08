@@ -11,10 +11,11 @@
 # Gets stuck in echolocate sometimes _____________________________________________________________________________ 
 from Echolocate import Echolocate
 from time import sleep
-
+from subprocess import call
 
 class fullsweep(object):
    def __init__(self):
+      call(["sudo /home/pi/PiBits/ServoBlaster/user/servod --p1pins=<7>"], shell=True)
       self.step_size = 10 # change pulse width 10*10us = 100us or 0.1ms in each step
       self.dont_buffer = 0 # don't buffer writes to avoid flushes
       self.samparray = [0 for i in range(200/self.step_size)]
@@ -28,7 +29,10 @@ class fullsweep(object):
             print cmd
             servo_blaster_device.write(cmd)
             self.samparray[li] = self.locator.getSample()
+            print str(self.samparray[li])
+            li=li+1
             #sleep(.25) # This might be way too big of a sleep
+      return self.samparray      
 
 if __name__ == "__main__":
    x=fullsweep()
