@@ -14,7 +14,7 @@ def Vlad():
    envmap=sensor.sweep()
    front = len(envmap)/2
    print "I'm going to try to go forward."
-   while(envmap(front)>500&&envmap(front+1)>500&envmap(front-1)>500):
+   while(envmap(front)>500 & envmap(front+1)>500 & envmap(front-1)>500):
       motor.forward()
       envmap=sensor.sweep()
    
