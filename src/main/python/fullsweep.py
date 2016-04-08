@@ -16,7 +16,7 @@ from subprocess import call
 class fullsweep(object):
    def __init__(self):
       #Initialize servoblaster to only use pin 7 
-      call(["sudo /home/pi/PiBits/ServoBlaster/user/servod --p1pins=<7>"], shell=True)
+      call(["sudo /home/pi/PiBits/ServoBlaster/user/servod --p1pins=7"], shell=True)
       self.step_size = 10 # change pulse width 10*10us = 100us or 0.1ms in each step
       self.dont_buffer = 0 # don't buffer writes to avoid flushes
       self.samparray = [0 for i in range(200/self.step_size)]
@@ -25,14 +25,16 @@ class fullsweep(object):
    def sweep(self):
       li = 0 # Loop counter
       with open('/dev/servoblaster', "w", self.dont_buffer ) as servo_blaster_device:
+         servo_blaster_device.write("0=50\n")
+         sleep(.2) # Give the servo time to catch up.
          for pulse_width in range(50,250,self.step_size):
             cmd = "0=" + str(pulse_width) + "\n"
             print cmd
             servo_blaster_device.write(cmd)
+            sleep(.1) # let the servo settle before taking samples
             self.samparray[li] = self.locator.getSample()
             print str(self.samparray[li])
             li=li+1
-            #sleep(.25) # This might be way too big of a sleep
       return self.samparray      
 
 if __name__ == "__main__":
