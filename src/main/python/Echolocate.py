@@ -21,7 +21,7 @@ class Echolocate(object):
       y = self.takeSample(self.trig, self.echo)
       z = self.takeSample(self.trig, self.echo)
 
-      while max(x,y,z) > 2*min(x,y,z):
+      while max(x,y,z) > 2*min(x,y,z) or max(x,y,z)>10000:
          print ("Outlier Detected. Retaking Samples")
          x = self.takeSample(self.trig, self.echo)
          y = self.takeSample(self.trig, self.echo)
@@ -39,23 +39,31 @@ class Echolocate(object):
       GPIO.setup(echo, GPIO.IN)
       GPIO.output(trig,  False) # set trigger pin to low,
       time.sleep(.1) # wait for it to settle
+      # Instead, just wait for echo pin to be low.
+      while GPIO.input(echo) == 1:
+         print "waiting for this thing to cool off"
       GPIO.output(trig, True)
       time.sleep(0.00001) # HC - SR04 documentation, set trig high 10uS.
       GPIO.output(trig, False)
       start=time.time() # added this to prevent crash from undefined start
       while GPIO.input(echo) == 0: # trigger sets echo pin to high
         start = time.time() # Keeps getting stuck here! 
-      
+        #print time.time()-start
       end=start # prevent crash from undefined end hopefully!
       while GPIO.input(echo) == 1: # echo goes low when signal is returned
         end = time.time() # Python returns last time echo was high 
       duration = end - start # measure the time the pin stayed high
-      soundSpeed = 34300 # Speed of soundwave
-      distance = duration*34300/2 # account for return trip
+      distance = duration*17150 # Will return Distance in CM
       # reset pins, return distance to nearest object
       return distance
 
 if __name__ == "__main__":
-   x = Echolocate()
-   print x.getSample()
-   print x.getSample()
+   y = Echolocate()
+   # Try 100 Times
+   x = 0
+   while x<100:
+     if y.getSample()>150:
+       print "Something went wrong at "+x
+     x=x+1
+   print "done. did something go wrong? ^ "+x  
+   
