@@ -15,6 +15,7 @@ from subprocess import call
 
 class fullsweep(object):
    def __init__(self):
+      #Initialize servoblaster to only use pin 7 
       call(["sudo /home/pi/PiBits/ServoBlaster/user/servod --p1pins=<7>"], shell=True)
       self.step_size = 10 # change pulse width 10*10us = 100us or 0.1ms in each step
       self.dont_buffer = 0 # don't buffer writes to avoid flushes
