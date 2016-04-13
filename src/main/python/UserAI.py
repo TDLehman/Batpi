@@ -19,16 +19,16 @@ def UserAI():
       if command=="w":
          print "w"
          #motor.forward()
-      elif command=="a":
+      if command=="a":
          print "a"
          #motor.turnLeft()
-      elif command=="s":
+      if command=="s":
          print "s"
          #motor.reverse()
-      elif command=="d":
+      if command=="d":
          print "d"
          #motor.turnRight()
-      elif command=="x":
+      if command=="x":
          print "x"
          #envmap=sensor.sweep()
       command=raw_input("What should I do? (w,a,s,d,x,q)")    
