@@ -14,7 +14,7 @@ def UserAI():
    #envmap=sensor.sweep()
    #front = len(envmap)/2
    stepcount = 0 # How far user has travelled thus far.
-   command=input("What should I do? (w,a,s,d,x,q)")
+   command=raw_input("What should I do? (w,a,s,d,x,q)")
    while(command==("w" or "a" or "s" or "d" or "x")):
       if command=="w":
          print "w"
