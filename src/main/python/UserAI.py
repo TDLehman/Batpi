@@ -17,14 +17,19 @@ def UserAI():
    command=input("What should I do? (w,a,s,d,x,q)")
    while(command==("w" or "a" or "s" or "d" or "x")):
       if command=="w":
+         print "w"
          #motor.forward()
       elif command=="a":
+         print "a"
          #motor.turnLeft()
       elif command=="s":
+         print "s"
          #motor.reverse()
       elif command=="d":
+         print "d"
          #motor.turnRight()
       elif command=="x":
+         print "x"
          #envmap=sensor.sweep()         
       stepcount=stepcount+1
 
