@@ -30,7 +30,8 @@ def UserAI():
          #motor.turnRight()
       elif command=="x":
          print "x"
-         #envmap=sensor.sweep()         
+         #envmap=sensor.sweep()
+      command=raw_input("What should I do? (w,a,s,d,x,q)")    
       stepcount=stepcount+1
 
    print "either that was an invalid command, or you are done!"
