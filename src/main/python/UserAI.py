@@ -35,6 +35,6 @@ def UserAI():
       stepcount=stepcount+1
 
    print "either that was an invalid command, or you are done!"
-   print "I performed "+stepcount+" actions!"
+   print "I performed "+str(stepcount)+" actions!"
 
 UserAI()
