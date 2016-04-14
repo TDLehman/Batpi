@@ -19,10 +19,11 @@ def Vlad():
    print "I'm going to try to go forward."
    print "This is what I see: "+str(envmap[front-1])+", "+str(envmap[front])+", "+str(envmap[front+1])
    print "Here is everything I see:"+str(envmap)
-   while(envmap[front]>50 and envmap[front+1]>50 and envmap[front-1]>50):
-      motor.forward()
+   while(envmap[front]>20 and envmap[front+1]>20 and envmap[front-1]>20):
+      motor.forward(min(envmap[front],envmap[front+1],envmap[front-1])/10)
+      envmap=sensor.sweep()
       stepcount=stepcount+1
-      envmap[front]=envmap[front]-50
+      
    
    print "There's something in front of me. I'm done."
    print "I performed "+str(stepcount)+" actions!"
