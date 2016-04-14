@@ -44,17 +44,17 @@ class PiDrive(object):
       sleep(.5)
       self.stop() 
 
-   def forward(self, distance):
-      print "Going forward "+str(distance)
-      GPIO.output(self.Motor1A,GPIO.HIGH)
-      GPIO.output(self.Motor1B,GPIO.LOW)
-      GPIO.output(self.Motor1E,GPIO.HIGH)
+   #def forward(self, distance):
+      #print "Going forward "+str(distance)
+      #GPIO.output(self.Motor1A,GPIO.HIGH)
+      #GPIO.output(self.Motor1B,GPIO.LOW)
+      #GPIO.output(self.Motor1E,GPIO.HIGH)
       
-      GPIO.output(self.Motor2A,GPIO.HIGH)
-      GPIO.output(self.Motor2B,GPIO.LOW)
-      GPIO.output(self.Motor2E,GPIO.HIGH)
-      sleep(distance)
-      self.stop()
+      #GPIO.output(self.Motor2A,GPIO.HIGH)
+      #GPIO.output(self.Motor2B,GPIO.LOW)
+      #GPIO.output(self.Motor2E,GPIO.HIGH)
+      #sleep(distance)
+      #self.stop()
 
 
       

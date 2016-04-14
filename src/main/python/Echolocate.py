@@ -23,8 +23,8 @@ class Echolocate(object):
 
 
       # Check for outliers
-      while max(x,y,z) > 2*min(x,y,z) or min(x,y,z)==-1:
-         #print ("Outlier Detected. Retaking Samples")
+      while max(x,y,z) > 1.5*min(x,y,z) or min(x,y,z)==-1:
+         print ("Outlier Detected. Retaking Samples")
          x = self.takeSample(self.trig, self.echo)
          y = self.takeSample(self.trig, self.echo)
          z = self.takeSample(self.trig, self.echo)
@@ -39,7 +39,7 @@ class Echolocate(object):
       GPIO.setup(trig, GPIO.OUT) # set GPIO ports as either output or input
       GPIO.setup(echo, GPIO.IN)
       GPIO.output(trig,  False) # set trigger pin to low,
-      time.sleep(.05) # wait for it to settle
+      #time.sleep(.05) # wait for it to settle
       # Instead, just wait for echo pin to be low.
       while GPIO.input(echo) == 1:
          print "waiting for this thing to cool off"
@@ -51,7 +51,7 @@ class Echolocate(object):
       while GPIO.input(echo) == 0: # trigger sets echo pin to high
         start = time.time() # Keeps getting stuck here!
         loopbreaker=loopbreaker+1
-        if loopbreaker>2000:  # This would indicate that Echo didn't trigger
+        if loopbreaker>1000:  # This would indicate that Echo didn't trigger
           #print "Echo didn't trigger. Returning"
           return -1
           
