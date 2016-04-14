@@ -17,7 +17,7 @@ class fullsweep(object):
    def __init__(self):
       #Initialize servoblaster to only use pin 7 
       call(["sudo /home/pi/PiBits/ServoBlaster/user/servod --p1pins=7"], shell=True)
-      self.step_size = 10 # change pulse width 10*10us = 100us or 0.1ms in each step
+      self.step_size = 200/10 # Divisor = number of samples
       self.dont_buffer = 0 # don't buffer writes to avoid flushes
       self.samparray = [0 for i in range(200/self.step_size)]
       self.locator = Echolocate()
@@ -29,9 +29,9 @@ class fullsweep(object):
          sleep(.2) # Give the servo time to catch up.
          for pulse_width in range(50,250,self.step_size):
             cmd = "0=" + str(pulse_width) + "\n"
-            print cmd
+            #print cmd  #Uncomment to print each servo location
             servo_blaster_device.write(cmd)
-            sleep(.1) # let the servo settle before taking samples
+            sleep(.05) # let the servo settle before taking samples
             self.samparray[li] = self.locator.getSample()
             print str(self.samparray[li])
             li=li+1
