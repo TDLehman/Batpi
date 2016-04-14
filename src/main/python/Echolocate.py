@@ -29,7 +29,7 @@ class Echolocate(object):
          y = self.takeSample(self.trig, self.echo)
          z = self.takeSample(self.trig, self.echo)
 
-      avDistance = (x+y+z)/float(3)
+      avDistance = round((x+y+z)/float(3), 2)
       return avDistance
 
    def takeSample(self, trig, echo):
