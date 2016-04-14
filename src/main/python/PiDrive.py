@@ -30,6 +30,7 @@ class PiDrive(object):
       GPIO.setup(self.Motor2B,GPIO.OUT)
       GPIO.setup(self.Motor2E,GPIO.OUT)
 
+#________________________________________________________
 
    def forward(self):
       print "Going forward 1"
@@ -42,6 +43,20 @@ class PiDrive(object):
       GPIO.output(self.Motor2E,GPIO.HIGH)
       sleep(.5)
       self.stop() 
+
+   def forward(self, distance):
+      print "Going forward "+str(distance)
+      GPIO.output(self.Motor1A,GPIO.HIGH)
+      GPIO.output(self.Motor1B,GPIO.LOW)
+      GPIO.output(self.Motor1E,GPIO.HIGH)
+      
+      GPIO.output(self.Motor2A,GPIO.HIGH)
+      GPIO.output(self.Motor2B,GPIO.LOW)
+      GPIO.output(self.Motor2E,GPIO.HIGH)
+      sleep(distance)
+      self.stop()
+
+
       
    def backward(self): 
       print "Going backward 1"
