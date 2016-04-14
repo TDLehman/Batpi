@@ -37,6 +37,18 @@ class fullsweep(object):
             li=li+1
       return self.samparray      
 
+
+      
+   def checkFront(self):
+      with open('/dev/servoblaster', "w", self.dont_buffer ) as servo_blaster_device:
+         servo_blaster_device.write("0=150\n")
+         sleep(.2) #Give time to face forward
+         sample1 = self.locator.getSample()
+         return sample1
+      
+
+
+   
 if __name__ == "__main__":
    x=fullsweep()
    x.sweep()
