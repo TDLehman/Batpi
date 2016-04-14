@@ -24,17 +24,22 @@ def UserAI():
          motor.turnLeft()
       elif command=="s":
          print "s"
-         motor.reverse()
+         motor.backward()
       elif command=="d":
          print "d"
          motor.turnRight()
       elif command=="x":
          print "x"
          envmap=sensor.sweep()
-      command=raw_input("What should I do? (w,a,s,d,x,q)")    
-      stepcount=stepcount+1
+         print "Here is everything I see:\n"+str(envmap)
+         print "Here is what is in front of me: "+str(envmap[front-1])+", "+str(envmap[front])+", "+str(envmap[front+1])
+      elif command=="q":
+         print "Quitting!"
+      if command!="q":
+         command=raw_input("What should I do? (w,a,s,d,x,q)")    
+         stepcount=stepcount+1
 
-   print "either that was an invalid command, or you are done!"
+   print "you are done!"
    print "I performed "+str(stepcount)+" actions!"
 
 UserAI()
