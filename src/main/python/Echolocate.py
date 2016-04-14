@@ -51,7 +51,7 @@ class Echolocate(object):
       while GPIO.input(echo) == 0: # trigger sets echo pin to high
         start = time.time() # Keeps getting stuck here!
         loopbreaker=loopbreaker+1
-        if loopbreaker>1000:  # This would indicate that Echo didn't trigger
+        if loopbreaker>2000:  # This would indicate that Echo didn't trigger
           #print "Echo didn't trigger. Returning"
           return -1
           
