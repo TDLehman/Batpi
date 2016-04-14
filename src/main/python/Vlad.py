@@ -17,7 +17,7 @@ def Vlad():
    
    stepcount = 0 # How far vlad has travelled thus far.
    print "I'm going to try to go forward."
-   print "This is what I see: "+str(envmap[front-1])+", "+str(envmap[front])+", "+str(envmap[front])
+   print "This is what I see: "+str(envmap[front-1])+", "+str(envmap[front])+", "+str(envmap[front+1])
    print "Here is everything I see:"+str(envmap)
    while(envmap[front]>50 and envmap[front+1]>50 and envmap[front-1]>50):
       motor.forward()
