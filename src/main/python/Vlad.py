@@ -33,8 +33,8 @@ def Vlad():
       
    while(stepcount<10):   
       while(envmap[front]>20 and envmap[front+1]>20 and envmap[front-1]>20):
-         motor.forward()
-         motor.forward()
+         motor.forwardx(fdistance)
+         #motor.forward()
          envmap=sensor.sweep()
          
       if(envmap[front-3]>envmap[front+3] and envmap[0]>20):
