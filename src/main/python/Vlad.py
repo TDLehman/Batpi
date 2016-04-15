@@ -36,7 +36,7 @@ def Vlad():
          motor.forward()
          motor.forward()
          envmap=sensor.sweep()
-         stepcount=stepcount+1
+         
       if(envmap[front-3]>envmap[front+3] and envmap[0]>20):
          motor.turnRight()
          motor.turnRight()
@@ -44,7 +44,7 @@ def Vlad():
          motor.forward()
          motor.turnLeft()
          motor.turnLeft()
-         stepcount=stepcount+1
+         
       elif(envmap[10]>20):
          motor.turnLeft()
          motor.turnLeft()
@@ -52,7 +52,7 @@ def Vlad():
          motor.forward()
          motor.turnRight()
          motor.turnRight()
-         stepcount=stepcount+1
+      stepcount=stepcount+1
    print "I think I'm pretty stuck. I'm done."
    print "I performed "+str(stepcount)+" actions!"
 
