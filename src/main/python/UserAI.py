@@ -24,7 +24,7 @@ def UserAI():
          motor.forward()
       elif command=="z":
          seconds=raw_input("for how many seconds?")
-         forwardx(int(seconds))
+         motor.forwardx(int(seconds))
       elif command=="a":
          print "a"
          motor.turnLeft()
