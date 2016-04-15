@@ -11,10 +11,10 @@ from fullsweep import fullsweep
 def UserAI():
    motor = PiDrive()
    sensor= fullsweep()
-   envmap= sensor.sweep()
-   print "Right now I see: "+str(envmap)
-   front = len(envmap)/2
-   print "This is in front of me: " + str(envmap[front+1])+", "+str(envmap[front])+", "+str(envmap[front-1])
+   #envmap= sensor.sweep()
+   #print "Right now I see: "+str(envmap)
+   #front = len(envmap)/2
+   #print "This is in front of me: " + str(envmap[front+1])+", "+str(envmap[front])+", "+str(envmap[front-1])
    
    stepcount = 0 # How far user has travelled thus far.
    command=raw_input("What should I do? (w,a,s,d,f,x,q)")
@@ -37,7 +37,7 @@ def UserAI():
          print "Here is everything I see:\n"+str(envmap)
          print "Here is what is in front of me: "+str(envmap[front-1])+", "+str(envmap[front])+", "+str(envmap[front+1])
       elif command=="f":
-         print "This is in front of me: "+sensor.checkFront()
+         print "This is in front of me: "+str(sensor.checkFront())
       elif command=="q":
          print "Quitting!"
       if command!="q":
