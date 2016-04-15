@@ -14,8 +14,8 @@ def UserAI():
    envmap= sensor.sweep()
    front = len(envmap)/2
    stepcount = 0 # How far user has travelled thus far.
-   command=raw_input("What should I do? (w,a,s,d,x,q)")
-   while(command=="w" or command=="a" or command=="s" or command=="d" or command=="x"):
+   command=raw_input("What should I do? (w,a,s,d,f,x,q)")
+   while(command=="w" or command=="a" or command=="s" or command=="d" or command=="x" or command=="f"):
       if command=="w":
          print "w"
          motor.forward()
@@ -33,6 +33,8 @@ def UserAI():
          envmap=sensor.sweep()
          print "Here is everything I see:\n"+str(envmap)
          print "Here is what is in front of me: "+str(envmap[front-1])+", "+str(envmap[front])+", "+str(envmap[front+1])
+      elif command=="f":
+         print "This is in front of me: "+sensor.checkFront()
       elif command=="q":
          print "Quitting!"
       if command!="q":
