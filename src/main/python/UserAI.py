@@ -12,7 +12,10 @@ def UserAI():
    motor = PiDrive()
    sensor= fullsweep()
    envmap= sensor.sweep()
+   print "Right now I see: "+str(envmap)
    front = len(envmap)/2
+   print "This is in front of me: " + str(envmap[front+1])+", "+str(envmap[front])+", "+str(envmap[front-1])
+   
    stepcount = 0 # How far user has travelled thus far.
    command=raw_input("What should I do? (w,a,s,d,f,x,q)")
    while(command=="w" or command=="a" or command=="s" or command=="d" or command=="x" or command=="f"):
