@@ -17,11 +17,14 @@ def UserAI():
    print "This is in front of me: " + str(envmap[front+1])+", "+str(envmap[front])+", "+str(envmap[front-1])
    
    stepcount = 0 # How far user has travelled thus far.
-   command=raw_input("What should I do? (w,a,s,d,f,x,q)")
-   while(command=="w" or command=="a" or command=="s" or command=="d" or command=="x" or command=="f"):
+   command=raw_input("What should I do? (w,a,s,d,f,z,x,q)")
+   while(command=="w" or command=="a" or command=="s" or command=="d" or command=="x" or command=="f" or command=="z"):
       if command=="w":
          print "w"
          motor.forward()
+      elif command=="z":
+         seconds=raw_input("for how many seconds?")
+         forwardx(int(seconds))
       elif command=="a":
          print "a"
          motor.turnLeft()
@@ -41,7 +44,7 @@ def UserAI():
       elif command=="q":
          print "Quitting!"
       if command!="q":
-         command=raw_input("What should I do? (w,a,s,d,x,q)")    
+         command=raw_input("What should I do? (w,a,s,d,x,f,z,q)")    
          stepcount=stepcount+1
 
    print "you are done!"
