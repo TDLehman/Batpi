@@ -36,7 +36,7 @@ def Vlad():
          motor.forward()
          motor.forward()
          envmap=sensor.sweep()
-         
+         stepcount=stepcount+1
       if(envmap[front-3]>envmap[front+3] and envmap[0]>30):
          motor.turnRight()
          motor.turnRight()
