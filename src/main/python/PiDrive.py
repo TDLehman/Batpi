@@ -34,14 +34,16 @@ class PiDrive(object):
 
    def forward(self):
       print "Going forward 1"
-      GPIO.output(self.Motor1A,GPIO.HIGH)
-      GPIO.output(self.Motor1B,GPIO.LOW)
-      GPIO.output(self.Motor1E,GPIO.HIGH)
-      #sleep(.025) try to correct for butthole turning. :(     
       GPIO.output(self.Motor2A,GPIO.HIGH)
       GPIO.output(self.Motor2B,GPIO.LOW)
       GPIO.output(self.Motor2E,GPIO.HIGH)
-      #sleep(.025) it might be this one butthole turning instead
+      sleep(.05) 
+      
+      
+      GPIO.output(self.Motor1A,GPIO.HIGH)
+      GPIO.output(self.Motor1B,GPIO.LOW)
+      GPIO.output(self.Motor1E,GPIO.HIGH)
+#      sleep(1) #try to correct for turning. :(     
       sleep(.5)
       self.stop() 
 
@@ -114,7 +116,8 @@ class PiDrive(object):
 if __name__ == "__main__":
    x=PiDrive()
    x.forward()
-   x.backward()
-   x.turnLeft()
-   x.turnRight()
+   x.forward()
+#   x.backward()
+#   x.turnLeft()
+#   x.turnRight()
 
