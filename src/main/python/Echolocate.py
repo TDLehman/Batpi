@@ -23,7 +23,7 @@ class Echolocate(object):
 
 
       # Check for outliers
-      while max(x,y,z) > 1.25*min(x,y,z) or min(x,y,z)==-1:
+      while max(x,y,z) > 1.5*min(x,y,z) or min(x,y,z)==-1:
          print ("Outlier Detected. Retaking Samples")
          x = self.takeSample(self.trig, self.echo)
          y = self.takeSample(self.trig, self.echo)
