@@ -32,12 +32,12 @@ def Vlad():
 
       
    while(stepcount<10):   
-      while(envmap[front]>30 and envmap[front+1]>30 and envmap[front-1]>30 and envmap[front-2]>30 and envmap[front+2]>30 and stepcount<10):
+      while(envmap[front]>20 and envmap[front+1]>20 and envmap[front-1]>20 and stepcount<10):
          motor.forward()
          motor.forward()
          envmap=sensor.sweep()
          stepcount=stepcount+1
-      if(envmap[front-3]>envmap[front+3] and envmap[0]>30):
+      if(envmap[front-3]>envmap[front+3] and envmap[0]>20):
          motor.turnRight()
          motor.turnRight()
          motor.forward()
@@ -48,7 +48,7 @@ def Vlad():
          
          stepcount=stepcount+1
          envmap=sensor.sweep()
-      elif(envmap[9]>30):
+      elif(envmap[9]>20):
          motor.turnLeft()
          motor.turnLeft()
          motor.forward()
@@ -59,13 +59,13 @@ def Vlad():
          envmap=sensor.sweep()
       else:
          print "I can't go forward"
-         while envmap[9]<30 and envmap[0]<30 and stepcount<10:
+         while envmap[9]<20 and envmap[0]<20 and stepcount<10:
             motor.backward()
             motor.backward()
             envmap=sensor.sweep()
             stepcount=stepcount+1
 
-         if(envmap[front-3]>envmap[front+3] and envmap[0]>30):
+         if(envmap[front-3]>envmap[front+3] and envmap[0]>20):
             motor.turnRight()
             motor.turnRight()
             motor.forward()
@@ -74,7 +74,7 @@ def Vlad():
             motor.turnLeft()
             stepcount=stepcount+1
             envmap=sensor.sweep()
-         elif(envmap[9]>30):
+         elif(envmap[9]>20):
             motor.turnLeft()
             motor.turnLeft()
             motor.forward()
